@@ -1,0 +1,11 @@
+event: extensions
+op: and
+rules:
+  - op: is
+    path: routing/hostname
+    value: ext-secureannex
+  - op: is
+    path: event/results/extensions/?/visibility
+    value: unlisted
+- action: report
+  name: SecureAnnex - Chrome extension remote access category detected
