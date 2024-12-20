@@ -1,0 +1,16 @@
+event: extensions
+op: and
+rules:
+  - op: is
+    path: routing/hostname
+    value: ext-secureannex
+  - op: or
+    rules:
+      - op: contains
+        path: event/results/extensions/?/categories/?/
+        value: Remote Access
+      - op: contains
+        path: event/results/extensions/?/categories/?/
+        value: Proxy Avoidance
+- action: report
+  name: SecureAnnex - Browser extension with remote access category detected
