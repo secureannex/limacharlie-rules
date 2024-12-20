@@ -8,4 +8,4 @@ rules:
     path: event/results/extensions/?/visibility
     value: unlisted
 - action: report
-  name: SecureAnnex - Chrome extension remote access category detected
+  name: Secure Annex - Chrome extension remote access category detected
