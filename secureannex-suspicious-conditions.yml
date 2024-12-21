@@ -9,21 +9,24 @@ rules:
       - op: is
         path: event/results/extensions/?/manifest
         value: 2
-      - op: is less than
+      - op: is lower than
         path: event/results/extensions/?/rating
         value: 3
-      - op: is less than
+      - op: is lower than
         path: event/results/extensions/?/users
         value: 1000000
-      - op: is less than
+      - op: is lower than
         path: event/results/extensions/?/num_ratings
         value: 50
       - op: is
         path: event/results/extensions/?/featured
         value: false
-      - op: not exists
+      - op: exists
         path: event/results/extensions/?/support_site
-      - op: not exists
+        truthy: true
+      - op: exists
         path: event/results/extensions/?/website
-      - op: not exists
+        truthy: true
+      - op: exists
         path: event/results/extensions/?/privacy_notice
+        truthy: true
