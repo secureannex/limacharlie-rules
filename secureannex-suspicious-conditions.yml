@@ -1,0 +1,29 @@
+event: extensions
+op: and
+rules:
+  - op: is
+    path: routing/hostname
+    value: ext-secureannex
+  - op: and
+    rules:
+      - op: is
+        path: event/results/extensions/?/manifest
+        value: 2
+      - op: is less than
+        path: event/results/extensions/?/rating
+        value: 3
+      - op: is less than
+        path: event/results/extensions/?/users
+        value: 1000000
+      - op: is less than
+        path: event/results/extensions/?/num_ratings
+        value: 50
+      - op: is
+        path: event/results/extensions/?/featured
+        value: false
+      - op: not exists
+        path: event/results/extensions/?/support_site
+      - op: not exists
+        path: event/results/extensions/?/website
+      - op: not exists
+        path: event/results/extensions/?/privacy_notice
