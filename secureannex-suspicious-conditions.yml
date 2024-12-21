@@ -1,32 +1,40 @@
-event: extensions
-op: and
-rules:
-  - op: is
-    path: routing/hostname
-    value: ext-secureannex
-  - op: and
-    rules:
-      - op: is
-        path: event/results/extensions/?/manifest
-        value: 2
-      - op: is lower than
-        path: event/results/extensions/?/rating
-        value: 3
-      - op: is lower than
-        path: event/results/extensions/?/users
-        value: 1000000
-      - op: is lower than
-        path: event/results/extensions/?/num_ratings
-        value: 50
-      - op: is
-        path: event/results/extensions/?/featured
-        value: false
-      - op: exists
-        path: event/results/extensions/?/support_site
-        not: true
-      - op: exists
-        path: event/results/extensions/?/website
-        not: true
-      - op: exists
-        path: event/results/extensions/?/privacy_notice
-        not: true
+detect
+  event: extensions
+  op: and
+  rules:
+    - op: is
+      path: routing/hostname
+      value: ext-secureannex
+    - op: and
+      rules:
+        - op: is
+          path: event/results/extensions/?/manifest
+          value: 2
+        - op: is lower than
+          path: event/results/extensions/?/rating
+          value: 3
+        - op: is lower than
+          path: event/results/extensions/?/users
+          value: 1000000
+        - op: is lower than
+          path: event/results/extensions/?/num_ratings
+          value: 50
+        - op: is
+          path: event/results/extensions/?/featured
+          value: false
+        - op: exists
+          path: event/results/extensions/?/support_site
+          not: true
+        - op: exists
+          path: event/results/extensions/?/website
+          not: true
+        - op: exists
+          path: event/results/extensions/?/privacy_notice
+          not: true
+respond:
+- action: report
+  metadata:
+    author: John Tuckner
+    description: Matches multiple suspicious attributes of an extension
+    level: low
+  name: Detects suspicious extensions across multiple attributes
