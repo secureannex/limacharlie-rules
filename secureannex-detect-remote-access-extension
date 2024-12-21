@@ -12,5 +12,3 @@ rules:
       - op: contains
         path: event/results/extensions/?/categories/?/
         value: Proxy Avoidance
-- action: report
-  name: SecureAnnex - Browser extension with remote access category detected
