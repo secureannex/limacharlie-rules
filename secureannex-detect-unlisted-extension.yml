@@ -1,9 +1,17 @@
-event: extensions
-op: and
-rules:
-  - op: is
-    path: routing/hostname
-    value: ext-secureannex
-  - op: is
-    path: event/results/extensions/?/visibility
-    value: unlisted
+detect:
+  event: extensions
+  op: and
+  rules:
+    - op: is
+      path: routing/hostname
+      value: ext-secureannex
+    - op: is
+      path: event/results/extensions/?/visibility
+      value: unlisted
+respond:
+- action: report
+  metadata:
+    author: John Tuckner
+    description: Detects extensions that are unlisted/private in the web store
+    level: low
+  name: Detect unlisted extension
