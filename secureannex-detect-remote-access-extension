@@ -1,14 +1,22 @@
-event: extensions
-op: and
-rules:
-  - op: is
-    path: routing/hostname
-    value: ext-secureannex
-  - op: or
-    rules:
-      - op: contains
-        path: event/results/extensions/?/categories/?/
-        value: Remote Access
-      - op: contains
-        path: event/results/extensions/?/categories/?/
-        value: Proxy Avoidance
+detect:
+  event: extensions
+  op: and
+  rules:
+    - op: is
+      path: routing/hostname
+      value: ext-secureannex
+    - op: or
+      rules:
+        - op: contains
+          path: event/results/extensions/?/categories/?/
+          value: Remote Access
+        - op: contains
+          path: event/results/extensions/?/categories/?/
+          value: Proxy Avoidance
+respond:
+- action: report
+  metadata:
+    author: John Tuckner
+    description: Detects categories related to free VPNs and proxies
+    level: low
+  name: Detect remote access categories
