@@ -23,10 +23,10 @@ rules:
         value: false
       - op: exists
         path: event/results/extensions/?/support_site
-        truthy: true
+        not: true
       - op: exists
         path: event/results/extensions/?/website
-        truthy: true
+        not: true
       - op: exists
         path: event/results/extensions/?/privacy_notice
-        truthy: true
+        not: true
