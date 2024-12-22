@@ -36,5 +36,5 @@ respond:
   metadata:
     author: John Tuckner
     description: Matches multiple suspicious attributes of an extension
-    level: low
+    level: medium
   name: Detects suspicious extensions across multiple attributes
